@@ -19,9 +19,9 @@ using namespace std;
 
 float lastx, lasty;
 GLint stencilBits;
-static int viewx = 150;
-static int viewy = 150;
-static int viewz = 140;
+static int viewx = 0;
+static int viewy = 30;
+static int viewz = 250;
 
 float rot = 0;
 
@@ -268,6 +268,8 @@ void drawSceneTanah(Terrain *terrain, GLfloat r, GLfloat g, GLfloat b) {
 
 
 
+
+
 //material bangunan
 
 void gedung(void) {
@@ -280,9 +282,41 @@ void gedung(void) {
     glRotated(-90, 1, 0, 0);
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
     glColor3d(1.0, 0.1, 0.1);
-    glutSolidCone(5.2, 1.75, 4, 1);
+    glutSolidCone(5.2, 1.75, 4, 5);
     glPopMatrix();
   
+    //atap kanan
+    glPushMatrix();
+    glScaled(0.78, 0.6, 1.15);
+    glTranslatef(7.3, 3.45, 0.0);
+    glRotated(45, 0, 1, 0);
+    glRotated(-90, 1, 0, 0);
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+    glColor3d(1.0, 0.1, 0.1);
+    glutSolidCone(5.8, 1.75, 4, 5);
+    glPopMatrix();
+
+    //atap kanan
+    glPushMatrix();
+    glScaled(0.78, 0.6, 1.15);
+    glTranslatef(-7.3, 3.45, 0.0);
+    glRotated(45, 0, 1, 0);
+    glRotated(-90, 1, 0, 0);
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+    glColor3d(1.0, 0.1, 0.1);
+    glutSolidCone(5.8, 1.75, 4, 5);
+    glPopMatrix();
+
+    //lantai utama
+    glPushMatrix();
+    glScaled(4, 0, 1.3);
+    glTranslatef(-0.5, 5.45,-1);  
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+    glColor3f(0.8, 0.8, 0.8);  
+    glutSolidCube(8);
+    glPopMatrix();
+
+
 
    ///Dinding Kiri tengah
     glPushMatrix();
@@ -448,7 +482,7 @@ void gedung(void) {
     glTranslatef(-4.03, 2.43,85); 
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
     glColor3f(0.1, 0.1, 0.1);   
-    glutSolidCube(1);
+    glutSolidCube(1.0);
     glPopMatrix();
     
     //Jendela dinding samping II
@@ -457,7 +491,7 @@ void gedung(void) {
     glTranslatef(-5.3, 2.43,85); 
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
     glColor3f(0.1, 0.1, 0.1);   
-    glutSolidCube(1);
+    glutSolidCube(1.0);
     glPopMatrix();
     
     //Jendela dinding samping III
@@ -466,7 +500,7 @@ void gedung(void) {
     glTranslatef(-6.6, 2.43,85); 
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
     glColor3f(0.1, 0.1, 0.1);   
-    glutSolidCube(1);
+    glutSolidCube(1.0);
     glPopMatrix();
     
     //Jendela dinding samping IV
@@ -475,7 +509,7 @@ void gedung(void) {
     glTranslatef(-7.9, 2.43,85); 
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
     glColor3f(0.1, 0.1, 0.1);   
-    glutSolidCube(1);
+    glutSolidCube(1.0);
     glPopMatrix();
     
     //Jendela dinding samping V
@@ -484,10 +518,33 @@ void gedung(void) {
     glTranslatef(-9.2, 2.43,85); 
     glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
     glColor3f(0.1, 0.1, 0.1);   
-    glutSolidCube(1);
+    glutSolidCube(1.0);
     glPopMatrix();
 }
 
+
+void garisjalanvertikal(void) {
+ 
+    glPushMatrix();
+    glScaled(0.08, 0.005, 0.5);
+    glTranslatef(-30.0, 2.45, 0.0);   
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+    glColor3f(1.0, 1.0, 1.0);
+    glutSolidCube(5.0);
+    glPopMatrix();
+}
+
+
+void garisjalanhorizontal(void) {
+ 
+    glPushMatrix();
+    glScaled(0.5, 0.01, 0.07);
+    glTranslatef(1.0, 1.0, 0.0);   
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+    glColor3f(1.0, 1.0, 1.0);
+    glutSolidCube(5.0);
+    glPopMatrix();
+}
 
 
 
@@ -544,12 +601,109 @@ void display(void) {
 
 
 
-//rumah 1
+//gedung
 glPushMatrix();
 glTranslatef(160,10,160); 
 glScalef(5, 5, 5);
 //glBindTexture(GL_TEXTURE_2D, texture[0]);
 gedung();
+glPopMatrix();
+
+
+//garis jalan vertikal
+glPushMatrix();
+glTranslatef(122.5,6.4,110); 
+glScalef(5, 5, 5);
+garisjalanvertikal();
+glPopMatrix();
+
+//garis jalan vertikal
+glPushMatrix();
+glTranslatef(124,6.4,90); 
+glScalef(5, 5, 5);
+garisjalanvertikal();
+glPopMatrix();
+
+//garis jalan horizontal
+glPushMatrix();
+glTranslatef(145,6.4,72); 
+glScalef(5, 5, 5);
+garisjalanhorizontal();
+glPopMatrix();
+
+//garis jalan horizontal
+glPushMatrix();
+glTranslatef(125,6.4,72); 
+glScalef(5, 5, 5);
+garisjalanhorizontal();
+glPopMatrix();
+
+//garis jalan horizontal
+glPushMatrix();
+glTranslatef(93,6.4,72); 
+glScalef(5, 5, 5);
+garisjalanhorizontal();
+glPopMatrix();
+
+//garis jalan horizontal
+glPushMatrix();
+glTranslatef(165,6.4,72); 
+glScalef(5, 5, 5);
+garisjalanhorizontal();
+glPopMatrix();
+
+//garis jalan horizontal
+glPushMatrix();
+glTranslatef(185,6.4,72); 
+glScalef(5, 5, 5);
+garisjalanhorizontal();
+glPopMatrix();
+
+//garis jalan horizontal
+glPushMatrix();
+glTranslatef(205,6.4,72); 
+glScalef(5, 5, 5);
+garisjalanhorizontal();
+glPopMatrix();
+
+//garis jalan diagonal
+glPushMatrix();
+glTranslatef(225,6.4,68); 
+glScalef(5, 5, 5);
+glRotatef(40,5,5,0);
+garisjalanhorizontal();
+glPopMatrix();
+
+//garis jalan diagonal
+glPushMatrix();
+glTranslatef(245,6.4,58); 
+glScalef(5, 5, 5);
+glRotatef(40,5,5,0);
+garisjalanhorizontal();
+glPopMatrix();
+
+//garis jalan diagonal
+glPushMatrix();
+glTranslatef(265,6.4,48); 
+glScalef(5, 5, 5);
+glRotatef(40,5,5,0);
+garisjalanhorizontal();
+glPopMatrix();
+
+//garis jalan diagonal
+glPushMatrix();
+glTranslatef(285,6.4,38); 
+glScalef(5, 5, 5);
+glRotatef(40,5,5,0);
+garisjalanhorizontal();
+glPopMatrix();
+
+//garis jalan diagonal
+glPushMatrix();
+glTranslatef(305,6.4,28); 
+glScalef(5, 5, 5);
+glRotatef(40,5,5,0);
+garisjalanhorizontal();
 glPopMatrix();
 
 

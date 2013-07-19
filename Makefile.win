@@ -1,5 +1,5 @@
 # Project: StasiunKereta
-# Makefile created by Dev-C++ 4.9.9.1
+# Makefile created by Dev-C++ 4.9.9.2
 
 CPP  = g++.exe
 CC   = gcc.exe
@@ -7,12 +7,13 @@ WINDRES = windres.exe
 RES  = 
 OBJ  = main.o imageloader.o vec3f.o $(RES)
 LINKOBJ  = main.o imageloader.o vec3f.o $(RES)
-LIBS =  -L"C:/Dev-Cpp/lib" ../../../../Installed/Dev-Cpp/lib/libopengl32.a ../../../../Installed/Dev-Cpp/lib/libglu32.a ../../../../Installed/Dev-Cpp/lib/libglut32.a  
-INCS =  -I"C:/Dev-Cpp/include" 
-CXXINCS =  -I"C:/Dev-Cpp/include/c++/3.3.1"  -I"C:/Dev-Cpp/include/c++/3.3.1/mingw32"  -I"C:/Dev-Cpp/include/c++/3.3.1/backward"  -I"C:/Dev-Cpp/lib/gcc-lib/mingw32/3.3.1/include"  -I"C:/Dev-Cpp/include" 
+LIBS =  -L"E:/Installed/Dev-Cpp/lib" ../../../../Installed/Dev-Cpp/lib/libopengl32.a ../../../../Installed/Dev-Cpp/lib/libglu32.a ../../../../Installed/Dev-Cpp/lib/libglut32.a  
+INCS =  -I"E:/Installed/Dev-Cpp/include" 
+CXXINCS =  -I"E:/Installed/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"E:/Installed/Dev-Cpp/include/c++/3.4.2/backward"  -I"E:/Installed/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"E:/Installed/Dev-Cpp/include/c++/3.4.2"  -I"E:/Installed/Dev-Cpp/include" 
 BIN  = StasiunKereta.exe
 CXXFLAGS = $(CXXINCS)  
 CFLAGS = $(INCS)  
+RM = rm -f
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -20,7 +21,7 @@ all: all-before StasiunKereta.exe all-after
 
 
 clean: clean-custom
-	rm -f $(OBJ) $(BIN)
+	${RM} $(OBJ) $(BIN)
 
 $(BIN): $(OBJ)
 	$(CPP) $(LINKOBJ) -o "StasiunKereta.exe" $(LIBS)
